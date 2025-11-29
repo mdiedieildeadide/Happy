@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>موقع محمد</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        height: 100vh;
+        background: #000;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Cairo", sans-serif;
+        font-size: 32px;
+        overflow: hidden;
+        position: relative;
+    }
+    #dots {
+        position: absolute;
+        bottom: 12px;
+        left: 20px;
+        font-size: 24px;
+        color: #777;
+        font-family: monospace;
+    }
+    #heart {
+        display: none;
+        font-size: 36px;
+    }
+    #f {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+</style>
+</head>
 
+<body>
+
+    <div id="main">(: موقع محمد</div>
+    <div id="dots">.</div>
+    <div id="heart">....</div>
+    <div id="f">):</div>
+
+<script>
+    const dots = document.getElementById("dots");
+    const main = document.getElementById("main");
+    const heart = document.getElementById("heart");
+
+    let i = 0;
+    const seq = [".", "..", "..."];
+
+    const loop = setInterval(() => {
+        dots.textContent = seq[i++ % seq.length];
+    }, 900);
+
+    setTimeout(() => {
+        clearInterval(loop);
+        main.style.display = "none";
+        dots.style.display = "none";
+        heart.style.display = "block";
+
+        setTimeout(() => {
+            document.body.innerHTML = "";
+            location.href = "about:blank";
+        }, 2400);
+    }, 15000);
+</script>
+
+</body>
+</html>
